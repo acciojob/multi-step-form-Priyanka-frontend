@@ -6,14 +6,14 @@ function Step({
   handleChange,
   nextStep,
   previousStep,
-  handleSubmit
+  handleSubmit,
 }) {
   return (
     <form onSubmit={handleSubmit} className="form-container">
 
-      {/* Step 1 */}
+      {/* STEP 1 */}
       {step === 1 && (
-        <div className="step-card">
+        <div id="step1" className="step-card">
           <h2>Customer Details</h2>
 
           <label htmlFor="first_name">First Name:</label>
@@ -38,9 +38,9 @@ function Step({
         </div>
       )}
 
-      {/* Step 2 */}
+      {/* STEP 2 */}
       {step === 2 && (
-        <div className="step-card">
+        <div id="step2" className="step-card">
           <h2>Car Details</h2>
 
           <label htmlFor="model">Car Model:</label>
@@ -59,21 +59,19 @@ function Step({
             onChange={handleChange}
           />
 
-          <div className="buttons">
-            <button type="button" onClick={previousStep}>
-              Previous
-            </button>
+          <button type="button" onClick={previousStep}>
+            Previous
+          </button>
 
-            <button type="button" onClick={nextStep}>
-              Next
-            </button>
-          </div>
+          <button type="button" onClick={nextStep}>
+            Next
+          </button>
         </div>
       )}
 
-      {/* Step 3 */}
+      {/* STEP 3 */}
       {step === 3 && (
-        <div className="step-card">
+        <div id="step3" className="step-card">
           <h2>Payment Details</h2>
 
           <label htmlFor="card_info">Card Information:</label>
@@ -92,15 +90,13 @@ function Step({
             onChange={handleChange}
           />
 
-          <div className="buttons">
-            <button type="button" onClick={previousStep}>
-              Previous
-            </button>
+          <button type="button" onClick={previousStep}>
+            Previous
+          </button>
 
-            <button type="submit">
-              Submit
-            </button>
-          </div>
+          <button type="submit">
+            Submit
+          </button>
         </div>
       )}
     </form>
