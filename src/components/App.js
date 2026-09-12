@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Step from "./Step";
-import "../styles/App.css";
+import "./App.css";
 
 function App() {
   const [currentStep, setCurrentStep] = useState(1);
@@ -11,7 +11,7 @@ function App() {
     model: "",
     car_price: "",
     card_info: "",
-    expiry_date: ""
+    expiry_date: "",
   });
 
   const handleChange = (e) => {
@@ -19,39 +19,43 @@ function App() {
 
     setFormData((prev) => ({
       ...prev,
-      [id]: value
+      [id]: value,
     }));
   };
 
   const nextStep = () => {
-    setCurrentStep((prev) => prev + 1);
+    setCurrentStep((prev) => {
+      if (prev < 3) {
+        return prev + 1;
+      }
+      return prev;
+    });
   };
 
   const previousStep = () => {
-    setCurrentStep((prev) => prev - 1);
+    setCurrentStep((prev) => {
+      if (prev > 1) {
+        return prev - 1;
+      }
+      return prev;
+    });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     console.log(formData);
   };
 
   return (
-    <div>
-      <h1>Multi-Step Form</h1>
-
-      <Step
-        step={currentStep}
-        formData={formData}
-        handleChange={handleChange}
-        nextStep={nextStep}
-        previousStep={previousStep}
-        handleSubmit={handleSubmit}
-      />
-    </div>
+    <Step
+      step={currentStep}
+      formData={formData}
+      handleChange={handleChange}
+      nextStep={nextStep}
+      previousStep={previousStep}
+      handleSubmit={handleSubmit}
+    />
   );
 }
 
 export default App;
-
